@@ -36,7 +36,7 @@ stages{
                 script {
                     sh 'sudo docker ps -a --filter "name=hrefnhaila" --format "{{.ID}}" |sudo  xargs -r docker stop'
                     sh 'sudo docker ps -a --filter "name=hrefnhaila" --format "{{.ID}}" |sudo  xargs -r docker rm' 
-                    sh 'docker run -d  -p 3350:80 --name hrefnhaila$LOCAL_TAG hrefnhaila/nodejsnoe:$LOCAL_TAG'
+                    sh 'docker run -d  -p 3350:3000 --name hrefnhaila$LOCAL_TAG hrefnhaila/nodejsnoe:$LOCAL_TAG'
                 }
            
         }
