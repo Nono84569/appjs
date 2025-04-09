@@ -19,11 +19,11 @@ stages{
 
     stage('Docker Build & Push') {
         steps {
-            withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD_ACHRAF', variable: 'DOCKER_HUB_PASSWORD')]) {
+            withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD_NOE', variable: 'DOCKER_HUB_PASSWORD')]) {
                 echo "print tag : $LOCAL_TAG"
-                sh 'docker login -u hrefnhaila -p $DOCKER_HUB_PASSWORD'
-                sh 'docker build -t hrefnhaila/nodejsnoe:$LOCAL_TAG .'
-                sh 'docker push hrefnhaila/nodejsnoe:$LOCAL_TAG'
+                sh 'docker login -u nono84569 -p $DOCKER_HUB_PASSWORD'
+                sh 'docker build -t nono84569/nodejsnoe:$LOCAL_TAG .'
+                sh 'docker push nono84569/nodejsnoe:$LOCAL_TAG'
             }
         }
     }
@@ -34,9 +34,9 @@ stages{
         steps {
            
                 script {
-                    sh 'sudo docker ps -a --filter "name=hrefnhaila" --format "{{.ID}}" |sudo  xargs -r docker stop'
-                    sh 'sudo docker ps -a --filter "name=hrefnhaila" --format "{{.ID}}" |sudo  xargs -r docker rm' 
-                    sh 'docker run -d  -p 3350:3000 --name hrefnhaila$LOCAL_TAG hrefnhaila/nodejsnoe:$LOCAL_TAG'
+                    sh 'sudo docker ps -a --filter "name=nono84569" --format "{{.ID}}" |sudo  xargs -r docker stop'
+                    sh 'sudo docker ps -a --filter "name=nono84569" --format "{{.ID}}" |sudo  xargs -r docker rm' 
+                    sh 'docker run -d  -p 3350:3000 --name nono84569$LOCAL_TAG nono84569/nodejsnoe:$LOCAL_TAG'
                 }
            
         }
